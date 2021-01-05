@@ -9,4 +9,9 @@ storiesOf('Button', module)
   .addDecorator(BufferView)
   .add('default', () => (
     <Button onPress={action('tapped-default')}>Press me</Button>
+  ))
+  .add('outline', () => (
+    <Button onPress={action('tapped-outline')} outline>
+      Press
+    </Button>
   ));
