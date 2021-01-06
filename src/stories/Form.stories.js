@@ -3,10 +3,49 @@ import {View, Text} from 'react-native';
 import {storiesOf} from '@storybook/react-native';
 import {action} from '@storybook/addon-actions';
 
-import {Form, FieldWrapper} from '../components/Form';
+import {Form, FieldWrapper, TextInput} from '../components/Form';
 import {BufferView} from './decorators';
 
 // use the storiesOf function to create the actual story
+
+const defaultTextInputProps = {
+  label: 'Demo',
+  onChangeText: action('onChangeText'),
+};
+
+storiesOf('Form/TextInput', module)
+  .addDecorator(BufferView)
+  .add('default', () => <TextInput {...defaultTextInputProps} />)
+  .add('with placeholder', () => (
+    <TextInput placeholder="Demo placeholder" {...defaultTextInputProps} />
+  ))
+  .add('with value', () => (
+    <TextInput value="Demo value" {...defaultTextInputProps} />
+  ))
+  .add('with error message', () => (
+    <TextInput
+      message="Message placeholder"
+      {...defaultTextInputProps}
+      messageType="error"
+    />
+  ))
+  .add('with email', () => (
+    <TextInput
+      label="email"
+      value="john@reactnative.guru"
+      placeholder="Demo placeholder"
+      {...defaultTextInputProps}
+      keyboardType="email-address"
+    />
+  ))
+  .add('with password', () => (
+    <TextInput
+      label="password"
+      value="password"
+      placeholder="Demo placeholder"
+      {...defaultTextInputProps}
+    />
+  ));
 
 storiesOf('Form/FieldWrapper', module)
   .addDecorator(BufferView)
